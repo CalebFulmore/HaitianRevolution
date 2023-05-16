@@ -1,0 +1,184 @@
+@charset "ISO-8859-1";
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('../img/revo.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+header {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.timeline-container {
+  height: 60px; /* Change this to whatever height you want */
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* This will vertically center the timeline */
+  flex-wrap: wrap;
+  margin-bottom: 20%; 
+  padding: 20px; 
+}
+
+
+#timeline-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.timeline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 250px;
+  width: 100%;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: white;
+}
+
+.timeline > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: url('../img/haitian-flag.png'), auto; /* Replace '../img/haitian-flag.png' with the path to your flag image */
+}
+
+
+.circle:hover {
+  background-color: grey;
+  transform: scale(1.3);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+
+.year-label {
+  position: absolute;
+  top: 100%;
+  transform: translateY(5px);
+  font-size: 24px;
+  color: white;
+  pointer-events: none;
+}
+
+#modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity .52s ease-in-out, transform .5s ease-in-out;
+}
+
+#modal-container:not(.hidden) {
+  display: flex;
+  opacity: 1;
+  transform: scale(1);
+}
+
+#modal-content {
+  position: relative;
+  background-color: transparent;
+  padding: 1rem;
+  width: 60vw;
+  height: 60vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateY(-10%);
+  transition: transform .5s ease-in-out;
+}
+
+#modal-container:not(.hidden) #modal-content {
+  transform: translateY(0);
+}
+
+#modal-text-container {
+  position: absolute;
+  bottom: 0;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+  text-align: center;
+  max-height: 50%;
+  width: calc(100% - 2rem);
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+#modal-description {
+  margin: 0;
+}
+
+#modal-container,
+#modal-content {
+  transition: opacity .52s ease-in-out, transform .52s ease-in-out, border-color .52s ease-in-out;
+  border: 5px solid transparent;
+}
+
+#modal-container:not(.hidden),
+#modal-container:not(.hidden) #modal-content {
+    transition: opacity .5s ease-in-out,
+transform .52s ease-in-out;
+}
+
+#modal-container:not(.hidden) #modal-content {
+transform: translateY(0);
+}
+
+@media screen and (max-width: 768px) {
+#modal-content {
+width: 90vw;
+height: 90vh;
+}
+}
+
+.hidden {
+display: none;
+}
+
+footer {
+  text-align: center; 
+  padding: 20px; 
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: to match the style of the timeline-container */
+  color: white; /* Optional: to match the style of the timeline-container */
+}
+
+footer a {
+  color: white; /* Optional: to match the style of the timeline-container */
+  text-decoration: underline;
+}

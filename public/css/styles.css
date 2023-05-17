@@ -223,13 +223,14 @@ transform: translateY(0);
     left: -40px; /* Position the circle appropriately */
   }
 
-  .year-label {
-    left: 20px; /* Move the date to the right of the circle */
-    font-size: 24px;
-    top: 50%; /* Align the date with the circle */
-    transform: translateY(-50%); /* Center the date vertically */
-  }
-  
+.year-label {
+  left: 20px; /* Move the date to the right of the circle */
+  font-size: 34px;
+  top: 50%; /* Align the date with the circle */
+  transform: translateY(-50%); /* Center the date vertically */
+  white-space: nowrap; /* Keep the date on a single line */
+}
+
   .title {
 	padding: 1rem; /* add some padding around the title */
 	background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */

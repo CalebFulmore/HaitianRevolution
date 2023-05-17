@@ -25,6 +25,10 @@ function createCircles(eventData, timeline) {
 }
 
 
+
+
+
+
 function showModal(id) {
   const allEventData = [...eventData1, ...eventData2];
   const event = allEventData.find((event) => event.id === parseInt(id));
@@ -73,10 +77,16 @@ function closeModal() {
 
 function init() {
   const timelineContainers = document.querySelectorAll('.timeline-container .timeline');
-  createCircles(eventData1, timelineContainers[0]);
-  createCircles(eventData2, timelineContainers[1]);
+
+  // Check if we're on a mobile device (screen width less than or equal to 768px)
+  if (window.innerWidth <= 768) {
+    // If we're on a mobile device, concatenate the event data arrays and create circles for the first timeline container
+    createCircles([...eventData1, ...eventData2], timelineContainers[0]);
+  } else {
+    // If we're not on a mobile device, create circles for each timeline container as normal
+    createCircles(eventData1, timelineContainers[0]);
+    createCircles(eventData2, timelineContainers[1]);
+  }
 }
-
 document.addEventListener('DOMContentLoaded', init);
-
 

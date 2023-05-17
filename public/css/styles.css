@@ -1,18 +1,41 @@
 @charset "ISO-8859-1";
 
-body {
-  font-family: Arial, sans-serif;
+html, body {
+  font-family: 'Alex Brush';
   background-image: url('../img/revo.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  height: 100%;
 }
 
 header {
   text-align: center;
   padding: 1rem 0;
 }
+
+.title {
+	padding: 1rem; /* add some padding around the title */
+	background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  color: white; /* text color, change to your preference */
+  z-index: 2; /* make sure it's above other elements */
+}
+
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5vh; /* 5% of the viewport height */
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  color: white; /* text color, change to your preference */
+  text-align: center;
+  line-height: 5vh; /* vertically center text */
+}
+
 
 .timeline-container {
   height: 60px; /* Change this to whatever height you want */
@@ -102,6 +125,7 @@ header {
   opacity: 0;
   transform: scale(0);
   transition: opacity .52s ease-in-out, transform .5s ease-in-out;
+  padding: 15%;
 }
 
 #modal-container:not(.hidden) {
@@ -112,7 +136,8 @@ header {
 
 #modal-content {
   position: relative;
-  background-color: transparent;
+  border: 5px solid darkbrown; /* Add a dark brown border */
+  background-color: white; /* Make the background non-transparent */
   padding: 1rem;
   width: 60vw;
   height: 60vh;
@@ -147,7 +172,8 @@ header {
 #modal-container,
 #modal-content {
   transition: opacity .52s ease-in-out, transform .52s ease-in-out, border-color .52s ease-in-out;
-  border: 5px solid transparent;
+  border: 15px solid transparent; /* Increase the border for mobile devices */
+  
 }
 
 #modal-container:not(.hidden),
@@ -160,25 +186,55 @@ transform .52s ease-in-out;
 transform: translateY(0);
 }
 
+
 @media screen and (max-width: 768px) {
-#modal-content {
-width: 90vw;
-height: 90vh;
-}
+	.timeline-container {
+	width: 33%;
+    height: auto; /* This makes the height dynamic */
+    background-color: transparent;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column; /* This stacks the timeline vertically */
+    align-items: flex-start; /* Aligns items to the left */
+    margin-bottom: 20%; 
+    padding: 20px;
+  }
+  .timeline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline::before {
+    left: 50%; /* Position the line through the circles */
+    transform: translateX(-50%); /* Center the line */
+    bottom: 20px; /* Stop the line at the last circle */
+  }
+
+  .timeline > div {
+    width: 100%;
+    margin-left: 60px;
+    margin-bottom: 50px; /* Increase this to create more space between circles */
+    padding-bottom: 20px; /* Add padding to the last circle container */
+  }
+
+  .circle {
+    width: 40px; /* Increase the circle size */
+    height: 40px; /* Increase the circle size */
+    left: -40px; /* Position the circle appropriately */
+  }
+
+  .year-label {
+    left: 20px; /* Move the date to the right of the circle */
+    font-size: 24px;
+    top: 50%; /* Align the date with the circle */
+    transform: translateY(-50%); /* Center the date vertically */
+  }
+  
+  .title {
+	padding: 1rem; /* add some padding around the title */
+	background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  color: white; /* text color, change to your preference */
+  z-index: 2; /* make sure it's above other elements */
 }
 
-.hidden {
-display: none;
-}
-
-footer {
-  text-align: center; 
-  padding: 20px; 
-  background-color: rgba(0, 0, 0, 0.5); /* Optional: to match the style of the timeline-container */
-  color: white; /* Optional: to match the style of the timeline-container */
-}
-
-footer a {
-  color: white; /* Optional: to match the style of the timeline-container */
-  text-decoration: underline;
 }
